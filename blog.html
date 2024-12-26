@@ -5,37 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ - Blog Java</title>
-    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Mặc định cho các thiết bị lớn */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background: linear-gradient(135deg, #e3f2fd, #ffebee);
             color: #333;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #0077cc;
+            background: linear-gradient(90deg, #4caf50, #00bcd4);
             color: white;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             text-align: center;
-            animation: fadeIn 2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 1rem 0 0;
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0 0;
+            gap: 1.5rem;
         }
 
         nav ul li {
@@ -46,46 +49,49 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
-            color: #ffcc00;
+            color: #ffeb3b;
+            transform: scale(1.1);
         }
 
         .categories {
             display: flex;
             justify-content: center;
-            margin: 2rem 0;
-            gap: 1.5rem;
+            margin: 3rem 0;
+            gap: 2rem;
         }
 
         .category {
-            padding: 1rem;
-            background: #0077cc;
+            padding: 2rem;
+            background: linear-gradient(145deg, #00bcd4, #4caf50);
             color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
-            width: 200px;
+            width: 220px;
             cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .category:hover {
-            transform: scale(1.05);
-            background-color: #005fa3;
+            transform: scale(1.1);
+            background: linear-gradient(145deg, #4caf50, #00bcd4);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         .category h3 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
         .posts {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             display: none;
+            animation: fadeIn 1s ease-in-out;
         }
 
         .posts.active {
@@ -94,20 +100,25 @@
 
         .post {
             background: white;
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease forwards;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .post img {
-            width: 150px;
-            height: 100px;
+            width: 180px;
+            height: 120px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         .post-content {
@@ -116,7 +127,8 @@
 
         .post-content h4 {
             margin: 0;
-            color: #0077cc;
+            color: #00bcd4;
+            font-size: 1.5rem;
         }
 
         .post-content p {
@@ -125,45 +137,60 @@
 
         .post-content a {
             display: inline-block;
-            background: #0077cc;
+            background: #4caf50;
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: bold;
             transition: background-color 0.3s ease;
         }
 
         .post-content a:hover {
-            background: #005fa3;
+            background: #388e3c;
         }
 
         footer {
             text-align: center;
             padding: 1rem 0;
-            background: #0077cc;
+            background: linear-gradient(90deg, #4caf50, #00bcd4);
             color: white;
             margin-top: 2rem;
             animation: fadeIn 2s ease-in-out;
         }
 
-        /* Responsive design with media queries for smaller screens */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5rem;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
             }
 
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
             }
 
             .categories {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .category {
                 width: 100%;
-                padding: 1rem;
             }
 
             .post {
@@ -177,50 +204,7 @@
             }
 
             .posts {
-                max-width: 100%;
                 padding: 0 1rem;
-            }
-
-            .post-content h4 {
-                font-size: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .category {
-                font-size: 1.25rem;
-            }
-
-            .post-content h4 {
-                font-size: 1rem;
-            }
-
-            .post img {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
             }
         }
     </style>
@@ -259,7 +243,7 @@
                 <img src="https://niithanoi.edu.vn/pic/News/gioi-thieu-ve-java-1.jpg" alt="Giới thiệu về Java">
                 <div class="post-content">
                     <h4>Giới thiệu về Java</h4>
-                    <p>Đăng ngày: 1 tháng 1, 2025 bởi Võ Minh Đức</p>
+                    <p>Đăng ngày: 1 tháng 1, 2020</p>
                     <a href="java1.html">Xem thêm</a>
                 </div>
             </div>
@@ -268,7 +252,7 @@
                     alt="Cài đặt môi trường">
                 <div class="post-content">
                     <h4>Cài đặt môi trường</h4>
-                    <p>Đăng ngày: 2 tháng 2, 2025 bởi Võ Minh Đức</p>
+                    <p>Đăng ngày: 2 tháng 2, 2020</p>
                     <a href="java2.html">Xem thêm</a>
                 </div>
             </div>
@@ -277,7 +261,7 @@
                     alt="Các khái niệm cơ bản trong Java">
                 <div class="post-content">
                     <h4>Các khái niệm cơ bản trong Java</h4>
-                    <p>Đăng ngày: 2 tháng 2, 2025 bởi Võ Minh Đức</p>
+                    <p>Đăng ngày: 2 tháng 2, 2020</p>
                     <a href="java3.html">Xem thêm</a>
                 </div>
             </div>
@@ -286,7 +270,7 @@
                     alt="Biến và kiểu dữ liệu trong Java">
                 <div class="post-content">
                     <h4>Biến và kiểu dữ liệu trong Java</h4>
-                    <p>Đăng ngày: 3 tháng 3, 2025 bởi Võ Minh Đức</p>
+                    <p>Đăng ngày: 3 tháng 3, 2025</p>
                     <a href="java4.html">Xem thêm</a>
                 </div>
             </div>
@@ -295,7 +279,7 @@
                     alt="Cấu trúc điều khiển trong Java">
                 <div class="post-content">
                     <h4>Cấu trúc điều khiển trong Java</h4>
-                    <p>Đăng ngày: 4 tháng 4, 2025 bởi Võ Minh Đức</p>
+                    <p>Đăng ngày: 4 tháng 4, 2025</p>
                     <a href="java5.html">Xem thêm</a>
                 </div>
             </div>
@@ -304,7 +288,7 @@
                     alt="Hàm và phương thức trong Java">
                 <div class="post-content">
                     <h4>Hàm và phương thức trong Java</h4>
-                    <p>Đăng ngày: 5 tháng 5, 2025 bởi Võ Minh Đức</p>
+                    <p>Đăng ngày: 5 tháng 5, 2020</p>
                     <a href="java6.html">Xem thêm</a>
                 </div>
             </div>
@@ -318,7 +302,7 @@
                     alt="Bài viết JavaScript 1">
                 <div class="post-content">
                     <h4>Giới thiệu về JavaScript</h4>
-                    <p>Đăng ngày: 5 tháng 3, 2025 bởi Alice Brown</p>
+                    <p>Đăng ngày: 5 tháng 3, 2021</p>
                     <a href="javascript1.html">Xem thêm</a>
                 </div>
             </div>
@@ -328,7 +312,7 @@
                     alt="Bài viết JavaScript 2">
                 <div class="post-content">
                     <h4>Biến và Kiểu Dữ Liệu trong JavaScript</h4>
-                    <p>Đăng ngày: 6 tháng 3, 2025 bởi Alice Brown</p>
+                    <p>Đăng ngày: 6 tháng 3, 2021</p>
                     <a href="javascript2.html">Xem thêm</a>
                 </div>
             </div>
@@ -338,7 +322,7 @@
                     alt="Bài viết JavaScript 3">
                 <div class="post-content">
                     <h4>Các Cấu Trúc Điều Khiển trong JavaScript</h4>
-                    <p>Đăng ngày: 7 tháng 3, 2025 bởi Alice Brown</p>
+                    <p>Đăng ngày: 7 tháng 3, 2021</p>
                     <a href="javascript3.html">Xem thêm</a>
                 </div>
             </div>
@@ -348,7 +332,7 @@
                     alt="Bài viết JavaScript 4">
                 <div class="post-content">
                     <h4>Hàm và Phương Thức trong JavaScript</h4>
-                    <p>Đăng ngày: 8 tháng 3, 2025 bởi Alice Brown</p>
+                    <p>Đăng ngày: 8 tháng 3, 2021</p>
                     <a href="javascript4.html">Xem thêm</a>
                 </div>
             </div>
@@ -358,7 +342,7 @@
                     alt="Bài viết JavaScript 5">
                 <div class="post-content">
                     <h4>Vòng Lặp trong JavaScript</h4>
-                    <p>Đăng ngày: 9 tháng 3, 2025 bởi Alice Brown</p>
+                    <p>Đăng ngày: 9 tháng 3, 2021</p>
                     <a href="javascript5.html">Xem thêm</a>
                 </div>
             </div>
@@ -367,7 +351,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Blog Java của Nguyễn Văn A</p>
+        <p>&copy; 2024 Blog Java của Lê Tuấn Tú</p>
     </footer>
 </body>
 

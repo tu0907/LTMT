@@ -1,67 +1,88 @@
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #444;
+    background-color: #eef2f5;
 }
 
 header {
-    background: #0077cc;
+    background: linear-gradient(90deg, #0066cc, #003366);
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    font-size: 1rem;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
 }
 
 .profile {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem;
+    background: #fff;
+    margin: 2rem 10%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .avatar {
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .posts {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 article {
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
 }
 
 article h2 {
-    color: #0077cc;
+    color: #cc8b00;
+    font-size: 1.8rem;
 }
 
 footer {
     text-align: center;
-    padding: 1rem 0;
-    background: #0077cc;
+    padding: 1.5rem 0;
+    background: linear-gradient(90deg, #003366, #0066cc);
     color: #fff;
+    font-size: 0.9rem;
 }
